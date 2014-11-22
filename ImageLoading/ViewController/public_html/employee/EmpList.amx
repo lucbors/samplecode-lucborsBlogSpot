@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Header" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:listView var="row" value="#{bindings.employees.collectionModel}"
+                      fetchSize="#{bindings.employees.rangeSize}"
+                      selectedRowKeys="#{bindings.employees.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.employees.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+            <amx:listItem id="li1">
+                <amx:tableLayout width="100%" id="tl1">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="#{deviceScope.hardware.screen.diagonalSize gt 6 ? '90' : '50'}px"
+                                        halign="center"
+                                        rowSpan="#{deviceScope.hardware.screen.diagonalSize gt 6 ? '3' : '2'}" id="cf3"
+                                        height="44px">
+                            <amx:image source="pics/#{row.image}" id="i1"
+                                       inlineStyle="margin:0;#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'width:60px;height:60px;margin-top:13px;margin-bottom:10px;-webkit-border-radius:60px;border:1px #ccc solid;' : 'width:30px;height:30px;margin-top:5px;-webkit-border-radius:30px;border:1px #ccc solid;'}"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%"
+                                        height="#{deviceScope.hardware.screen.diagonalSize gt 6 ? '35px' : '25px'}"
+                                        id="cf6" valign="bottom">
+                            <amx:outputText value="#{row.firstName} #{row.lastName}" id="ot2" inlineStyle="margin:0"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
+</amx:view>
