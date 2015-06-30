@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="NewComplaintPagePageDef"
-                Package="com.fhacust.app.mobile.pageDefs.ComplaintPage">
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="newComplaintPageDef"
+                Package="com.fhacust.app.FullFlightApp">
   <parameters/>
   <executables>
     <variableIterator id="variables">

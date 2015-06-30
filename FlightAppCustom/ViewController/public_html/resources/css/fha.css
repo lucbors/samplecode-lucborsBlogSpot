@@ -220,3 +220,28 @@ html[dir=rtl].amx-android-chrome .custom-panelPage-with-springboard .custom-spri
 .amx-filmStrip_pageControlButton {
   -webkit-box-flex: 0;
 }
+
+
+/* Extra for select boolean switch */
+
+.fhaSwitch .amx-selectBooleanSwitch.on .field-value .switch:active {
+ color: Lime;
+}
+
+.fhaSwitch .amx-selectBooleanSwitch.off .field-value .switch:active {
+ color: Red;
+}
+
+.fhaFF{
+border-width: thin ;
+border-style: solid ;
+    border-color: Lime;
+}
+
+.fhaNoFF{
+border-width: thin ;
+border-style: solid ;
+    border-color: Red;
+    background-color: Red;
+    opacity: 0.5;
+}

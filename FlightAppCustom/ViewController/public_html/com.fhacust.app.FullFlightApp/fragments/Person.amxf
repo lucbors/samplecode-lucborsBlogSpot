@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:fragmentDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+                 xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <fragment xmlns="http://xmlns.oracle.com/adf/mf/amx/fragment" id="f1">
+    <attribute id="a0">
+      <description id="a0de">An Person Widget Title value</description>
+      <attribute-name id="a0n">Title</attribute-name>
+      <attribute-type id="a0t">Hardcoded String</attribute-type>
+    </attribute>
+    <attribute id="a31">
+      <description id="a31de">A Person collection</description>
+      <attribute-name id="a31n">Persons</attribute-name>
+      <attribute-type id="a31t">Tree Binding</attribute-type>
+    </attribute>
+    
+        <attribute id="a6">
+      <description id="a6de">A string defining the attribute in the collection used for the Name</description>
+      <attribute-name id="a6n">FirstName</attribute-name>
+      <attribute-type id="a6t">String</attribute-type>
+      <default-value id="a6d"></default-value>
+    </attribute>
+    
+          <attribute id="a7">
+      <description id="a7de">A string defining the attribute in the collection used for the Name</description>
+      <attribute-name id="a7n">LastName</attribute-name>
+      <attribute-type id="a7t">String</attribute-type>
+      <default-value id="a7d"></default-value>
+    </attribute>
+    
+        <attribute id="a8">
+      <description id="a8de">A string defining the attribute in the collection used for the special Indication</description>
+      <attribute-name id="a8n">Special</attribute-name>
+      <attribute-type id="a8t">String</attribute-type>
+      <default-value id="a8d"></default-value>
+    </attribute>
+
+        <attribute id="a9">
+      <description id="a9de">A string defining the attribute in the collection used for the Seat</description>
+      <attribute-name id="a9n">Seat</attribute-name>
+      <attribute-type id="a9t">String</attribute-type>
+      <default-value id="a9d"></default-value>
+    </attribute>
+    
+           <attribute id="b9">
+      <description id="b9de">A string defining the attribute in the collection used for the Complaint</description>
+      <attribute-name id="b9n">ComplaintFiled</attribute-name>
+      <attribute-type id="b9t">Boolean</attribute-type>
+      <default-value id="b9d">false</default-value>
+    </attribute>
+  </fragment>
+  <amx:listView id="list" var="row" value="#{Persons.collectionModel}" fetchSize="#{Persons.rangeSize}"
+                selectedRowKeys="#{Persons.collectionModel.selectedRow}"
+                rendered="#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'true' : 'false'}"
+                selectionListener="#{Persons.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                inlineStyle="width:100%;height:100%" bufferStrategy="additive">
+    <amx:listItem id="li1" showLinkIcon="false" actionListener="#{pageFlowScope.flightAppBean.fileComplaint}">
+      <amx:tableLayout width="100%" id="tl2">
+        <amx:rowLayout id="rl2">
+          <amx:cellFormat width="90px" halign="center" rowSpan="3" id="cf3" height="44px">
+            <amx:image source="/com.fhacust.app.FullFlightApp/images/nopic.png" id="i1"
+                       inlineStyle="border:2px solid #FFF;box-shadow:0 0 2px rgba(0,0,0,0.4);border-radius:50%;margin:4px;vertical-align:middle;#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'width:60px;height:60px;' : 'width:30px;height:30px;'}"/>
+          </amx:cellFormat>
+          <amx:cellFormat width="50%"
+                          height="#{deviceScope.hardware.screen.diagonalSize gt 6 ? '35px' : (deviceScope.device.os=='Android'?'36px':'32px')}"
+                          id="cf6" valign="middle" shortDesc="Cell">
+            <amx:outputText value="#{row[FirstName]} #{row[LastName]} (#{row[Seat]})" id="ot2" inlineStyle="margin:0"/>
+          
+          </amx:cellFormat>
+          <amx:cellFormat id="cf2" width="25%"
+                          rendered="#{(deviceScope.hardware.screen.diagonalSize gt 8 or row.active eq 'true') ? 'true' : 'false'}"
+                          rowSpan="#{deviceScope.hardware.screen.diagonalSize gt 6 ? '3' : '2'}" valign="middle"
+                          shortDesc="Cell">
+              <amx:goLink id="gl6" styleClass="adfmf-goLink-noUnderline tab_button"
+                           shortDesc="#{row[Special]}">
+                <amx:image id="i5" source="/com.fhacust.app.FullFlightApp/images/ff.png"
+                           inlineStyle="#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'width:60px;height:60px' : 'width:32px;height:32px'}"
+                           rendered="#{row[Special]!=''}"
+                           shortDesc="#{row[Special]}"/>
+              </amx:goLink>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf4" width="25%"
+                          rendered="#{(deviceScope.hardware.screen.diagonalSize gt 8 or row.active eq 'true') ? 'true' : 'false'}"
+                          rowSpan="#{deviceScope.hardware.screen.diagonalSize gt 6 ? '3' : '2'}" valign="middle"
+                          shortDesc="Cell">
+              <amx:commandLink id="cl3" styleClass="adfmf-commandLink-noUnderline tab_button"
+                             actionListener="#{pageFlowScope.flightAppBean.fileComplaint}" shortDesc="Email Link">
+                <amx:image id="i9" source="/com.fhacust.app.FullFlightApp/images/complaint.png"
+                           inlineStyle="#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'width:60px;height:60px' : 'width:32px;height:32px'}"
+                           shortDesc="Email Link Image"
+                           rendered="#{row[ComplaintFiled]}"
+                           />
+              </amx:commandLink>
+</amx:cellFormat>
+
+        </amx:rowLayout>
+      </amx:tableLayout>
+    </amx:listItem>
+  </amx:listView>
+</amx:fragmentDef>

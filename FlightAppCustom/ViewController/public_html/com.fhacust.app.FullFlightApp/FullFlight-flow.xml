@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="FullFlight-flow">
+    <default-activity>FlightDetails</default-activity>
+    <managed-bean id="__0">
+    <managed-bean-name>flightAppBean</managed-bean-name>
+    <managed-bean-class>com.fhacust.app.mobile.beans.FlightAppBean</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
+    <view id="FlightDetails">
+      <page>/com.fhacust.app.FullFlightApp/FlightDetails.amx</page>
+    </view>
+    <view id="Passengers">
+      <page>/com.fhacust.app.FullFlightApp/Passengers.amx</page>
+    </view>
+    <view id="Complaints">
+      <page>/com.fhacust.app.FullFlightApp/Complaints.amx</page>
+    </view>
+    <view id="view1">
+      <page>/com.fhacust.app.FullFlightApp/newComplaint.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>FlightDetails</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>passengers</from-outcome>
+        <to-activity-id>Passengers</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>Passengers</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>complain</from-outcome>
+        <to-activity-id>Complaints</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>complain2</from-outcome>
+        <to-activity-id>view1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+    
+   
+  </task-flow-definition>
+</adfc-mobile-config>

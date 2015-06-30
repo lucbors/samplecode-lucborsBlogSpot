@@ -1,5 +1,10 @@
 package com.fhacust.app.mobile.entities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -7,12 +12,42 @@ public class SlotEntity {
     
     private String time;
     private String airportCode;
+    private Date dateTime;
+
+    private String airportName;
+    private String city;
+    private String country;
+
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    
+    public SlotEntity() {
+        super();
+    }
+
 
     public void setTime(String time) {
         String oldTime = this.time;
         this.time = time;
+        
+   //     setDateTime (convertStringToDate(time));
         propertyChangeSupport.firePropertyChange("time", oldTime, time);
+    }
+
+    public Date convertStringToDate(String theDate){
+                                                                  
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+        Date date = new Date();
+        try
+        {
+            date = simpleDateFormat.parse(theDate);
+            System.out.println("date : "+simpleDateFormat.format(date));
+        }
+        catch (ParseException ex)
+        {
+            System.out.println("Exception "+ex);
+        }
+     return date;
     }
 
     public String getTime() {
@@ -58,14 +93,16 @@ public class SlotEntity {
     public String getCountry() {
         return country;
     }
-    private String airportName;
-    private String city;
-    private String country;
     
-    public SlotEntity() {
-        super();
+    public void setDateTime(Date dateTime) {
+        Date oldDateTime = this.dateTime;
+        this.dateTime = dateTime;
+        propertyChangeSupport.firePropertyChange("dateTime", oldDateTime, dateTime);
     }
 
+    public Date getDateTime() {
+        return dateTime;
+    }
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);
     }

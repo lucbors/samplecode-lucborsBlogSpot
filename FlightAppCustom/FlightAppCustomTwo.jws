@@ -1,5 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jws:workspace xmlns:jws="http://xmlns.oracle.com/ide/project">
+   <hash n="adrs-workspace-properties">
+      <value n="adrs-instance-binding" v="DefaultServer"/>
+   </hash>
    <value n="application-package-prefix" v="com.fhacust.app"/>
    <value n="appTemplateId" v="mafAppTemplate"/>
    <hash n="component-versions">
@@ -151,8 +154,15 @@
             <hash n="iosDeploymentOptions">
                <value n="appArchiveName" v="FlightAppCustomTwo"/>
                <value n="appBundleId" v="com.company.FlightAppCustomTwo"/>
-               <value n="debugFlag" v="false"/>
-               <value n="simulatorTarget" v="iPad 2 (iOS 8.1 - iPad 2)"/>
+               <value n="debugFlag" v="true"/>
+               <value n="iPadOrientationLandscapeLeft" v="false"/>
+               <value n="iPadOrientationLandscapeRight" v="false"/>
+               <value n="iPadOrientationPortraitUpsideDown" v="false"/>
+               <value n="iPhoneOrientationLandscapeLeft" v="false"/>
+               <value n="iPhoneOrientationLandscapeRight" v="false"/>
+               <value n="iPhoneOrientationPortrait" v="false"/>
+               <value n="iPhoneOrientationPortraitUpsideDown" v="false"/>
+               <value n="simulatorTarget" v="iPad Retina (iOS 8.3 - iPad Retina)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
             <hash n="mnfImageOptions">
@@ -251,7 +261,7 @@
    </hash>
    <hash n="shared-project-properties">
       <hash n="oracle.jdeveloper.runner.RunConfigurations">
-         <value n="activeName" v="iOS Simulator"/>
+         <value n="activeName" v="Android Device"/>
          <hash n="runConfigurationDefinitions">
             <hash n="Android Device">
                <hash n="Android_options">

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:fragmentDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+                 xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <fragment xmlns="http://xmlns.oracle.com/adf/mf/amx/fragment" id="f1">
+        <attribute id="a0">
+            <description id="a0de">An DepDest Title value</description>
+            <attribute-name id="a0n">Title</attribute-name>
+            <attribute-type id="a0t">Hardcoded String</attribute-type>
+        </attribute>
+
+        <attribute id="a1">
+            <description id="a1de">An DepDest Time attribute value</description>
+            <attribute-name id="a1n">Time</attribute-name>
+            <attribute-type id="a1t">Attribute Binding</attribute-type>
+        </attribute>
+        <attribute id="a2">
+            <description id="a2de">An DepDest AirportCode attribute value</description>
+            <attribute-name id="a2n">AirportCode</attribute-name>
+            <attribute-type id="a2t">Attribute Binding</attribute-type>
+        </attribute>
+        <attribute id="a3">
+            <description id="a3de">An DepDest AirportName attribute value</description>
+            <attribute-name id="a3n">AirportName</attribute-name>
+            <attribute-type id="a3t">Attribute Binding</attribute-type>
+        </attribute>
+        <attribute id="a4">
+            <description id="a4de">An DepDest City attribute value</description>
+            <attribute-name id="a4n">City</attribute-name>
+            <attribute-type id="a4t">Attribute Binding</attribute-type>
+        </attribute>
+        <attribute id="a5">
+            <description id="a5de">An DepDest Country attribute value</description>
+            <attribute-name id="a5n">Country</attribute-name>
+            <attribute-type id="a5t">Attribute Binding</attribute-type>
+        </attribute>
+
+    </fragment>
+    <amx:panelGroupLayout id="pglP" styleClass="custom-tile-fragment-root">
+        <amx:outputText id="text5" styleClass="custom-tile-title" value="#{Title}"/>
+        <amx:tableLayout id="tlDepDest" width="100%" layout="weighted" styleClass="custom-table-with-lines"
+                         shortDesc="table">
+            <amx:rowLayout id="rl1DepDest">
+                <amx:cellFormat id="cf2DepDest" styleClass="custom-h-divide-row" halign="start" shortDesc="Cell">
+                    <amx:outputText id="ot2DepDest" value="#{AirportName.inputValue} (#{AirportCode.inputValue})"
+                                    inlineStyle="font-weight: bold; color: #F8953B;"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rlDepDestDiv1">
+                <amx:cellFormat id="cfDepDestDiv1" styleClass="custom-divider" shortDesc="Cell">
+                    <amx:spacer id="spDepDestDiv1" width="1" height="1"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2DepDest">
+                <amx:cellFormat id="cf4DepDest" styleClass="custom-h-divide-row" halign="start" shortDesc="Cell">
+                    <amx:outputText id="ot4DepDest" value="#{City.inputValue} (#{Country.inputValue})"
+                                    inlineStyle="font-weight: bold; color: #68C182;"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rlDepDestDiv2">
+                <amx:cellFormat id="cfDepDestDiv2"  styleClass="custom-divider" shortDesc="Cell">
+                    <amx:spacer id="spDepDestDiv2" width="1" height="1"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl3DepDest">
+                <amx:cellFormat id="cf6DepDest" styleClass="custom-h-divide-row" halign="start" shortDesc="Cell">
+                    <amx:inputDate id="ot6DepDest" value="#{Time.inputValue}"
+                                    inputType="datetime"
+                                    readOnly="true"
+                                    inlineStyle="font-weight: bold; color: #F8953B;"/>                
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:outputText id="otFootCRto" value="Subject to change" styleClass="custom-card-small-footer"/>
+    </amx:panelGroupLayout>
+</amx:fragmentDef>

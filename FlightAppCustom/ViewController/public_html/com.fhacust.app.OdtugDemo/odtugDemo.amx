@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:listView var="row" value="#{bindings.passengers.collectionModel}" fetchSize="#{bindings.passengers.rangeSize}"
+                  selectedRowKeys="#{bindings.passengers.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.passengers.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1">
+        <amx:tableLayout width="100%" id="tl1">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat width="10px" id="cf1"/>
+            <amx:cellFormat width="60%" height="43px" id="cf4">
+              <amx:outputText value="#{row.firstName}" id="ot3"/>
+            </amx:cellFormat>
+            <amx:cellFormat width="10px" id="cf3"/>
+            <amx:cellFormat width="40%" halign="end" id="cf2">
+              <amx:outputText value="#{row.lastName}" styleClass="adfmf-listItem-highlightText" id="ot2"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

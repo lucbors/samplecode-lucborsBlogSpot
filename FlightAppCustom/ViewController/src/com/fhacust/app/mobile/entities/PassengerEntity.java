@@ -14,6 +14,9 @@ public class PassengerEntity {
     private String country;
     private String frequentFlyerNumber;
     private String seat;
+    private Boolean complaintFiled;
+
+   
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public PassengerEntity() {
@@ -72,7 +75,14 @@ public class PassengerEntity {
     public String getSeat() {
         return seat;
     }
+    public void setComplaintFiled(Boolean complaintFiled) {
+        this.complaintFiled = complaintFiled;
+    }
 
+    public Boolean getComplaintFiled() {
+        return complaintFiled;
+    }
+    
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);
     }

@@ -26,7 +26,7 @@ public class FlightDetailsEntityToJson {
         
         if(flight.getFlightStatus()!=null){
          sb.append("\"FlightCode\":\"");
-         sb.append(flight.getFlightcode()+"\",");
+         sb.append(flight.getFlightcode().getCarrierCode()+flight.getFlightcode().getFlightNumber()+"\",");
      
          sb.append("\"FlightDate\":\"");
          sb.append(flight.getFlightDate()+"\",");

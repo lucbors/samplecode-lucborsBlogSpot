@@ -1,0 +1,9 @@
+<basemap id="seatplan">
+    <layer id="seatLayer">
+        <image source="/thematicmap/seatplan.png" width="762" height="650"/>
+    </layer>
+    <points>
+        <point name="1"   x="150" y="100"/>
+        
+    </points>
+</basemap>

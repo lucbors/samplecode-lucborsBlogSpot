@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="PassengerListPageDef"
-                Package="com.fhacust.app.mobile.pageDefs.NewPassengerList">
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="FlightDetailsPageDef"
+                Package="com.fhacust.app.FullFlightApp">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="findFlightByNumber_flightNr" IsQueriable="false"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="FlightPassengersDC" id="FlightPassengersDCIterator"/>
-    <accessorIterator MasterBinding="FlightPassengersDCIterator" Binds="flightPassengers" RangeSize="25"
-                      DataControl="FlightPassengersDC"
-                      BeanClass="com.fhacust.app.mobile.entities.FlightPassengerListEntity"
-                      id="flightPassengersIterator"/>
-    <accessorIterator MasterBinding="flightPassengersIterator" Binds="flightCode" RangeSize="25"
-                      DataControl="FlightPassengersDC" BeanClass="com.fhacust.app.mobile.entities.FlightCodeEntity"
-                      id="flightCodeIterator"/>
     <accessorIterator MasterBinding="FlightPassengersDCIterator" Binds="flightDetails" RangeSize="25"
                       DataControl="FlightPassengersDC" BeanClass="com.fhacust.app.mobile.entities.FlightDetailsEntity"
                       id="flightDetailsIterator"/>
@@ -24,35 +19,9 @@
     <accessorIterator MasterBinding="flightDetailsIterator" Binds="destination" RangeSize="25"
                       DataControl="FlightPassengersDC" BeanClass="com.fhacust.app.mobile.entities.SlotEntity"
                       id="destinationIterator"/>
-    <accessorIterator MasterBinding="flightPassengersIterator" Binds="passengers" RangeSize="25"
-                      DataControl="FlightPassengersDC" BeanClass="com.fhacust.app.mobile.entities.PassengerEntity"
-                      id="passengersIterator"/>
   </executables>
   <bindings>
-    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
-                  IsViewObjectMethod="false" DataControl="FlightPassengersDC"
-                  InstanceName="data.FlightPassengersDC.dataProvider"/>
-    <attributeValues IterBinding="flightPassengersIterator" id="totalNumberOfPassengers">
-      <AttrNames>
-        <Item Value="totalNumberOfPassengers"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="flightPassengersIterator" id="flightDate">
-      <AttrNames>
-        <Item Value="flightDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="flightCodeIterator" id="carrierCode">
-      <AttrNames>
-        <Item Value="carrierCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="flightCodeIterator" id="flightNumber">
-      <AttrNames>
-        <Item Value="flightNumber"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="flightDetailsIterator" id="flightDate1">
+    <attributeValues IterBinding="flightDetailsIterator" id="flightDate">
       <AttrNames>
         <Item Value="flightDate"/>
       </AttrNames>
@@ -62,12 +31,12 @@
         <Item Value="flightStatus"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="flightcodeIterator" id="carrierCode1">
+    <attributeValues IterBinding="flightcodeIterator" id="carrierCode">
       <AttrNames>
         <Item Value="carrierCode"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="flightcodeIterator" id="flightNumber1">
+    <attributeValues IterBinding="flightcodeIterator" id="flightNumber">
       <AttrNames>
         <Item Value="flightNumber"/>
       </AttrNames>
@@ -77,6 +46,12 @@
         <Item Value="time"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="departureIterator" id="dateTime">
+      <AttrNames>
+        <Item Value="dateTime"/>
+      </AttrNames>
+    </attributeValues>
+
     <attributeValues IterBinding="departureIterator" id="airportCode">
       <AttrNames>
         <Item Value="airportCode"/>
@@ -102,6 +77,12 @@
         <Item Value="time"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="destinationIterator" id="dateTime1">
+      <AttrNames>
+        <Item Value="dateTime"/>
+      </AttrNames>
+    </attributeValues>
+
     <attributeValues IterBinding="destinationIterator" id="airportCode1">
       <AttrNames>
         <Item Value="airportCode"/>
@@ -122,15 +103,18 @@
         <Item Value="country"/>
       </AttrNames>
     </attributeValues>
-    <tree IterBinding="passengersIterator" id="passengers">
-      <nodeDefinition DefName="com.fhacust.app.mobile.entities.PassengerEntity" Name="passengers0">
-        <AttrNames>
-          <Item Value="firstName"/>
-          <Item Value="lastName"/>
-          <Item Value="frequentFlyerNumber"/>
-          <Item Value="seat"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
+    <methodAction id="findFlightByNumber" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findFlightByNumber" IsViewObjectMethod="false" DataControl="FlightPassengersDC"
+                  InstanceName="data.FlightPassengersDC.dataProvider">
+      <NamedData NDName="flightNr" NDType="java.lang.String" NDValue="#{pageFlowScope.flightAppBean.flightNumber}"/>
+    </methodAction>
+    <methodAction id="updateFlightStatus" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="updateFlightStatus" IsViewObjectMethod="false" DataControl="FlightPassengersDC"
+                  InstanceName="data.FlightPassengersDC.dataProvider">
+      <NamedData NDName="newFlightStatus" NDValue="#{'boardingComplete'}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="FlightPassengersDC"
+                  InstanceName="data.FlightPassengersDC.dataProvider"/>
   </bindings>
 </pageDefinition>

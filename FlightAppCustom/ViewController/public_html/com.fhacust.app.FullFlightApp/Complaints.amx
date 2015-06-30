@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="New Complaint (#{applicationScope.currentCarrierCode}#{applicationScope.currentFlightNumber})"
+                            id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" action="__back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:commandButton text="_hiddenShow" id="_popShowId" inlineStyle="visibility: hidden;">
+            <amx:showPopupBehavior id="spb1" popupId="p1" type="action" decoration="simple" alignId="pp1"
+                                   align="overlapMiddleCenter"/>
+        </amx:commandButton>
+        <amx:commandButton text="_hiddenClose" id="_popCloseId" inlineStyle="visibility: hidden;">
+            <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
+        </amx:commandButton>
+        <!--amx:panelFormLayout id="pfl1">
+      <amx:inputText value="#{bindings.firstName.inputValue}" label="#{bindings.firstName.hints.label}" id="it3"/>
+      <amx:inputText value="#{bindings.lastName.inputValue}" label="#{bindings.lastName.hints.label}" id="it5"/>
+      <amx:inputText value="#{bindings.country.inputValue}" label="#{bindings.country.hints.label}" id="it4"/>
+      <amx:inputText value="#{bindings.frequentFlyerNumber.inputValue}"
+                     label="#{bindings.frequentFlyerNumber.hints.label}" id="it2"/>
+      <amx:inputText value="#{bindings.seat.inputValue}" label="#{bindings.seat.hints.label}" id="it1"/>
+    </amx:panelFormLayout-->
+        <amx:tableLayout id="tl1" width="100%">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1" width="100%">
+                    <amx:panelGroupLayout id="pglPage1Card1" layout="horizontal"
+                                          styleClass=" adfmf-panelGroupLayout-groupBox custom-dashboard-card   ">
+                        <amx:fragment src="/com.fhacust.app.FullFlightApp/fragments/PersonForComplaint.amxf" id="f1">
+                            <amx:attribute name="Title" value="Complaint" id="a3"/>
+                            <amx:attribute name="FirstName" value="#{bindings.firstName}" id="a2"/>
+                            <amx:attribute name="LastName" value="#{bindings.lastName}" id="a5"/>
+                            <amx:attribute name="Seat" value="#{bindings.seat}" id="a1"/>
+                            <amx:attribute name="Country" value="#{bindings.country}" id="a4"/>
+                            <amx:attribute name="FF" value="#{bindings.frequentFlyerNumber}" id="a6"/>
+                        </amx:fragment>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2a">
+                <amx:cellFormat id="cf2" width="100%">
+                    <amx:panelGroupLayout id="pglPage1Card2"
+                                          styleClass="adfmf-panelGroupLayout-groupBox custom-dashboard-card">
+                        <amx:panelFormLayout id="pfl1">
+                            <amx:inputText value="#{bindings.description.inputValue}"
+                                           label="#{bindings.description.hints.label}" id="it1"/>
+                            <amx:inputText value="#{bindings.email.inputValue}" label="#{bindings.email.hints.label}"
+                                           id="it5"/>
+                            <amx:selectOneChoice label="compensation" id="soc1"
+                                                 value="#{bindings.compensation.inputValue}">
+                                <amx:selectItem id="si1" label="100 miles" value="100"/>
+                                <amx:selectItem id="si2" label="200 miles" value="200"/>
+                                <amx:selectItem id="si3" label="500 miles" value="500"/>
+                                <amx:selectItem id="si4" label="1000 miles" value="1000"/>
+                            </amx:selectOneChoice>
+                        </amx:panelFormLayout>
+                        <!--
+                        <amx:commandButton actionListener="#{bindings.createCustomerComplaint.execute}"
+                                           text="createCustomerComplaint"
+                                           disabled="#{!bindings.createCustomerComplaint.enabled}" 
+                                           id="cb3"/>
+-->
+                        <amx:commandButton actionListener="#{pageFlowScope.flightAppBean.submitComplaint}" text="submit"
+                                           id="cb3"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:panelPage>
+    <amx:popup id="p1" autoDismiss="false" animation="slideDown" inlineStyle="font-size:large;">
+        <amx:tableLayout id="tl0">
+            <amx:rowLayout id="rl0">
+                <amx:cellFormat id="cf0">
+                    <amx:outputText value="Confirmation"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2">
+                <amx:cellFormat id="cf3">
+                    <amx:outputText value="Complaint filed for #{applicationScope.currentCarrierCode}#{applicationScope.currentFlightNumber}"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl3">
+                <amx:cellFormat id="cf4">
+                    <amx:outputText value="#{bindings.firstName.inputValue} #{bindings.lastName.inputValue} (#{bindings.frequentFlyerNumber.inputValue})"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
+</amx:view>

@@ -149,7 +149,8 @@
                </list>
             </hash>
             <hash n="iosDeploymentOptions">
-               <value n="debugFlag" v="false"/>
+               <value n="debugFlag" v="true"/>
+               <value n="simulatorTarget" v="iPad Retina (iOS 8.3 - iPad Retina)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
             <value n="profileClass" v="oracle.adfmf.framework.dt.deploy.ios.McIosFrameworkProfile"/>

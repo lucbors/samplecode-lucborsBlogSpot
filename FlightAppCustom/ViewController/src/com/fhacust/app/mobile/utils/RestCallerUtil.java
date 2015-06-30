@@ -21,7 +21,7 @@ public class RestCallerUtil {
     //POST
     public String invokeUPDATE(String requestURI, String payload){
         
-        return this.invokeRestRequest(RestServiceAdapter.REQUEST_TYPE_POST, requestURI, payload);
+        return this.invokeRestRequest(RestServiceAdapter.REQUEST_TYPE_PUT, requestURI, payload);
     }
      
 
@@ -65,7 +65,7 @@ public class RestCallerUtil {
         String response = "";
         
         //set payload if there is payload passed with the request
-        if(payload != null){   
+        if(payload != null&& payload!=""){   
              //send with empty payload
              restPayload  = payload;
         }

@@ -7,8 +7,6 @@ public class FlightDetailsObject {
      * class that mimics the structure of the JSON payload for the flights request
      *
      */
-
-
     
     private FlightDetailsEntity flightDetails = null;
 
@@ -24,6 +22,4 @@ public class FlightDetailsObject {
     public FlightDetailsEntity getFlightDetails() {
         return flightDetails;
     }
-
-
 }

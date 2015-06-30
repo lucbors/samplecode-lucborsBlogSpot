@@ -3,6 +3,5 @@
                    version="1.0" name="FlightAppCustomTwo" id="com.company.FlightAppCustomTwo"
                    appControllerFolder="ApplicationController"
                    listener-class="com.fhacust.app.application.LifeCycleListenerImpl">
-  <adfmf:featureReference refId="com.fhacust.app.NewPassengerList" id="fr3"/>
-  <adfmf:featureReference refId="com.fhacust.app.NewCustomerComplaintFeature" id="fr1"/>
+  <adfmf:featureReference refId="com.fhacust.app.FullFlightApp" id="fr2"/>
 </adfmf:application>

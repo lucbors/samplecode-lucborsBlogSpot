@@ -58,10 +58,16 @@ public class LifeCycleListenerImpl implements LifeCycleListener
    * 3. At this stage, only an anonymous user is associated with the application
    *    so do not attempt to call any secure web services in this method.
    */
-  public void start()
-  {
-    // Add code here...
-  }
+  public void start() {
+//        try {
+//            initializeDatabaseFromScript();
+//        } catch (Exception ex) {
+//            Utility.ApplicationLogger.severe(ex.getMessage());
+//            throw new RuntimeException(ex);
+//        }
+//    
+ }
+
 
   /**
    * The stop method will be called at the termination of the application.
@@ -127,4 +133,53 @@ public class LifeCycleListenerImpl implements LifeCycleListener
   {
     // Add code here...
   }
+//    // 1: Read sql script from device storage one line at a time to create database records
+//    private void initializeDatabaseFromScript() throws Exception {
+//        InputStream scriptStream = null;
+//        Connection conn = null;
+//        try {
+//
+//            // 2: Retrieve the path to the local database file
+//            Utility.ApplicationLogger.info("Initializing DB...");
+//            String docRoot = AdfmfJavaUtilities.getDirectoryPathRoot(AdfmfJavaUtilities.ApplicationDirectory);
+//            String dbName = docRoot + "/local.db";
+//
+//            // 3: Check if the db file exists or not
+//            File dbFile = new File(dbName);
+//            if (dbFile.exists())
+//                return;
+//
+//            // 4: If it doesn't exist then we create it - make sure to turn off autocommit - db file created when opened, if it doesn't exist
+//            conn = new JDBCDataSource("jdbc:sqlite:" + dbName).getConnection();
+//            conn.setAutoCommit(false);
+//
+//            //  5: Retrieve the db script from storage and store it in memory
+//            Utility.ApplicationLogger.info("Reading script");
+//            scriptStream =
+//                Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/initializedb.sql");
+//            BufferedReader scriptReader = new BufferedReader(new InputStreamReader(scriptStream));
+//            String nextLine;
+//            StringBuffer nextStatement = new StringBuffer();
+//
+//            // 6: Iterate line after line in the script - if line starts with rem or comment, then skip it.  Otherwise execute each line
+//            Statement stmt = conn.createStatement();
+//            while ((nextLine = scriptReader.readLine()) != null) {
+//                if (nextLine.startsWith("REM") || nextLine.startsWith("COMMIT") || nextLine.length() < 1)
+//                    continue;
+//                nextStatement.append(nextLine);
+//                if (nextLine.endsWith(";")) {
+//                    Utility.ApplicationLogger.info("Execute statement: " + nextStatement.toString());
+//                    stmt.execute(nextStatement.toString());
+//                    nextStatement = new StringBuffer();
+//                }
+//            }
+//            // 7: Exception handeling
+//        } finally {
+//            if (conn != null)
+//                conn.commit();
+//            conn.close();
+//        }
+//    }
+//
+//  
 }

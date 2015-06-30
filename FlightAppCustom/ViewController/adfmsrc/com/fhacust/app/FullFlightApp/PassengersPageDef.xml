@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="PassengersPageDef"
+                Package="com.fhacust.app.FullFlightApp">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="FlightPassengersDC" id="FlightPassengersDCIterator"/>
+    <accessorIterator MasterBinding="FlightPassengersDCIterator" Binds="flightPassengers" RangeSize="25"
+                      DataControl="FlightPassengersDC"
+                      BeanClass="com.fhacust.app.mobile.entities.FlightPassengerListEntity"
+                      id="flightPassengersIterator"/>
+    <accessorIterator MasterBinding="flightPassengersIterator" Binds="passengers" RangeSize="25"
+                      DataControl="FlightPassengersDC" BeanClass="com.fhacust.app.mobile.entities.PassengerEntity"
+                      id="passengersIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="passengersIterator" id="passengers">
+      <nodeDefinition DefName="com.fhacust.app.mobile.entities.PassengerEntity" Name="passengers0">
+        <AttrNames>
+          <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="country"/>
+          <Item Value="frequentFlyerNumber"/>
+          <Item Value="seat"/>
+          <Item Value="complaintFiled"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+
+  </bindings>
+</pageDefinition>

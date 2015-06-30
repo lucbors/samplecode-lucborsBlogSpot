@@ -1,14 +1,4 @@
 <References xmlns="http://xmlns.oracle.com/adf/jndi">
-  <Reference name="FlightsREST" className="oracle.adf.model.connection.rest.RestConnection" xmlns="">
-    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
-    <RefAddresses>
-      <XmlRefAddr addrType="FlightsREST">
-        <Contents>
-          <restconnection name="FlightsREST" url="http://localhost:8080/FlyingHigh/FlightService/FlightService"/>
-        </Contents>
-      </XmlRefAddr>
-    </RefAddresses>
-  </Reference>
   <Reference name="CustomerREST" className="oracle.adf.model.connection.rest.RestConnection" xmlns="">
     <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
     <RefAddresses>
@@ -16,6 +6,16 @@
         <Contents>
           <restconnection name="CustomerREST"
                           url="http://localhost:8080/FlyingHighCustomer/soa-infra/resources/default/CustomerService!1.0/CustomerCareService"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="FlightsREST" className="oracle.adf.model.connection.rest.RestConnection" xmlns="">
+    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="FlightsREST">
+        <Contents>
+          <restconnection name="FlightsREST" url="http://127.0.0.1:8080/FlyingHigh/FlightService/FlightService"/>
         </Contents>
       </XmlRefAddr>
     </RefAddresses>

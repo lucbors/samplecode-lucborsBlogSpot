@@ -13,12 +13,14 @@ import com.fhacust.app.mobile.json.helper.JsonObjectToFlightPassengerListObject;
 import com.fhacust.app.mobile.uri.FlightCustURIs;
 import com.fhacust.app.mobile.utils.RestCallerUtil;
 
+import java.util.Date;
+
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
 
 public class FlightPassengersDC {
     
-    String flightNumber ="KL34";
+    String flightNumber;
     
     //Details for a selected flight. 
     private FlightDetailsEntity flightDetails = null;
@@ -36,6 +38,7 @@ public class FlightPassengersDC {
 
     public void setFlightDetails(FlightDetailsEntity flightDetails) {
         this.flightDetails = flightDetails;
+        providerChangeSupport.fireProviderRefresh("flightDetails");
     }
 
 
@@ -48,19 +51,24 @@ public class FlightPassengersDC {
     public void findFlightByNumber(String flightNr){
         if (flightNr!=null&&flightNr!=""){
             this.flightNumber=flightNr;
+            getFlightDetails();
+            getFlightPassengers();
+            
         }
-        getFlightDetails();
     }
    
     public FlightDetailsEntity getFlightDetails() {
 
-        if(flightDetails == null){ 
+        if(this.flightNumber == null){
+            flightNumber= "KL34";
+        }
             String restURI = FlightCustURIs.GetFlightsByNumberURI(this.flightNumber);
             RestCallerUtil rcu = new RestCallerUtil();
             String jsonObjectAsString = rcu.invokeREAD(restURI);
             FlightDetailsEntity flights = JsonObjectToFlightDetailsObject.getFlightsObject(jsonObjectAsString);
-            flightDetails = flights;
-        }
+            setFlightDetails( flights );
+           
+        
 
         return flightDetails;
     }
@@ -90,8 +98,8 @@ public class FlightPassengersDC {
         fc.setCarrierCode(carrierCode);
         fc.setFlightNumber(flightNumber);
         cust.setFlightCode(fc);
-        cust.setFlightDate(flightDate);
-        cust.setComplaintTimeStamp(complaintTimeStamp);
+        cust.setFlightDate(flightDetails.getFlightDate());
+        cust.setComplaintTimeStamp(new Date().toString());
 
         PassengerEntity p = new PassengerEntity();
         p.setFirstName(firstName);
@@ -114,6 +122,7 @@ public class FlightPassengersDC {
     
     public void setFlightPassengers(FlightPassengerListEntity flightPassengers) {
         this.flightPassengers = flightPassengers;
+        providerChangeSupport.fireProviderRefresh("flightPassengers");
     }
 
     public FlightPassengerListEntity getFlightPassengers() {
@@ -125,7 +134,9 @@ public class FlightPassengersDC {
             String jsonArrayAsString = rcu.invokeREAD(restURI);
             FlightPassengerListEntity passengers =
                 JsonObjectToFlightPassengerListObject.getPassengersArray(jsonArrayAsString);
-            flightPassengers = passengers;
+            setFlightPassengers ( passengers );
+         
+
         }
         return flightPassengers;
     }
