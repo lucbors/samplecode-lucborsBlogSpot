@@ -6,13 +6,10 @@
         <adfmf:includes>
           <adfmf:include type="StyleSheet" file="resources/css/fha.css" id="i3"/>
           <adfmf:include type="JavaScript" file="resources/js/fha.js" id="i5"/>
+          <adfmf:include type="StyleSheet" file="resources/css/signpad.css" id="i1"/>
+          <adfmf:include type="JavaScript" file="resources/js/signpad.js" id="i4"/>
         </adfmf:includes>
       </adfmf:amx>
-    </adfmf:content>
-  </adfmf:feature>
-  <adfmf:feature id="com.fhacust.app.OdtugDemo" name="OdtugDemo">
-    <adfmf:content id="com.fhacust.app.OdtugDemo.1">
-      <adfmf:amx file="com.fhacust.app.OdtugDemo/odtugDemo.amx"/>
     </adfmf:content>
   </adfmf:feature>
 </adfmf:features>

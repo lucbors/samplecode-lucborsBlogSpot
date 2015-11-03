@@ -1,5 +1,9 @@
 package com.fhacust.app.mobile.beans;
 
+import java.io.UnsupportedEncodingException;
+
+import java.net.URLEncoder;
+
 import java.util.Timer;
 
 import java.util.TimerTask;
@@ -7,6 +11,9 @@ import java.util.TimerTask;
 import javax.el.MethodExpression;
 
 import javax.el.ValueExpression;
+
+import oracle.adf.model.datacontrols.device.DeviceManager;
+import oracle.adf.model.datacontrols.device.DeviceManagerFactory;
 
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
@@ -17,13 +24,79 @@ import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 public class FlightAppBean {
 
     private String flightNumber;
+    private String signature = "";
+    private String image;
 
     boolean isPopupOpen = false;
+
+
 
 
     public FlightAppBean() {
         super();
     }
+
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void sendEmail(ActionEvent actionEvent) {
+        // Add event code here...
+        String content = "";
+
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.textForComplaint}", String.class);
+        String textForComplaint = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+
+        content = "A complaint for customer " + textForComplaint + " wil be filed. Please make sure to follow up.";
+        DeviceManagerFactory.getDeviceManager().sendEmail("customerservices@airline.com", null,
+                                                          "A complaint will be filed", content, "lucbors@gmail.com",
+                                                          null, null);
+    }
+
+
+    public void takeSituationPicture(ActionEvent actionEvent) {
+        // Add event code here...
+
+
+        DeviceManager dm = DeviceManagerFactory.getDeviceManager(); 
+
+        String myImageDataBase64 = dm.getPicture(50,                                    
+             DeviceManager.CAMERA_DESTINATIONTYPE_DATA_URL,                                    
+             DeviceManager.CAMERA_SOURCETYPE_PHOTOLIBRARY, 
+             false,  
+             DeviceManager.CAMERA_ENCODINGTYPE_JPEG, 200, 200);
+
+            try {
+                myImageDataBase64 =
+                    URLEncoder.encode(myImageDataBase64, java.nio.charset.StandardCharsets.UTF_8.toString());
+                
+                setImage(myImageDataBase64);
+            } catch (UnsupportedEncodingException e) {
+            }
+    }
+
 
     public void fileComplaint(ActionEvent actionEvent) {
         // Add event code here...
@@ -44,13 +117,6 @@ public class FlightAppBean {
 
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
-    }
-
-    public String getFlightNumber() {
-        return flightNumber;
-    }
 
     public void flightSelectionChange(ValueChangeEvent valueChangeEvent) {
 
@@ -149,4 +215,8 @@ public class FlightAppBean {
         }
 
     }
+
+
+
+
 }

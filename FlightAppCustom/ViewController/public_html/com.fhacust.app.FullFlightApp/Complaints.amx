@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
-          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" xmlns:eproseed="http://xmlns.oracle.com/eproseed">
     <amx:panelPage id="pp1">
         <amx:facet name="header">
             <amx:outputText value="New Complaint (#{applicationScope.currentCarrierCode}#{applicationScope.currentFlightNumber})"
@@ -10,7 +10,7 @@
             <amx:commandButton id="cb1" action="__back"/>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2"/>
+            <amx:commandButton id="cb2" text="debug" action="debug"/>
         </amx:facet>
         <amx:commandButton text="_hiddenShow" id="_popShowId" inlineStyle="visibility: hidden;">
             <amx:showPopupBehavior id="spb1" popupId="p1" type="action" decoration="simple" alignId="pp1"
@@ -29,7 +29,7 @@
     </amx:panelFormLayout-->
         <amx:tableLayout id="tl1" width="100%">
             <amx:rowLayout id="rl1">
-                <amx:cellFormat id="cf1" width="100%">
+                <amx:cellFormat id="cf1" width="60%">
                     <amx:panelGroupLayout id="pglPage1Card1" layout="horizontal"
                                           styleClass=" adfmf-panelGroupLayout-groupBox custom-dashboard-card   ">
                         <amx:fragment src="/com.fhacust.app.FullFlightApp/fragments/PersonForComplaint.amxf" id="f1">
@@ -42,9 +42,20 @@
                         </amx:fragment>
                     </amx:panelGroupLayout>
                 </amx:cellFormat>
+                <amx:cellFormat width="20%" halign="center">
+                    <amx:commandLink id="cl1" actionListener="#{pageFlowScope.flightAppBean.sendEmail}">
+                        <amx:image id="i6" source="/resources/images/email.png" shortDesc="" inlineStyle="height:30%;"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+                <amx:cellFormat width="20%" halign="center">
+                    <amx:commandLink id="cl1a" actionListener="#{pageFlowScope.flightAppBean.takeSituationPicture}">
+                        <amx:image id="i6a" source="/resources/images/camera.png" shortDesc=""
+                                   inlineStyle="height:30%;"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
             </amx:rowLayout>
-            <amx:rowLayout id="rl2a">
-                <amx:cellFormat id="cf2" width="100%">
+            <amx:rowLayout id="rl1a">
+                <amx:cellFormat id="cf2" width="70%" columnSpan="3">
                     <amx:panelGroupLayout id="pglPage1Card2"
                                           styleClass="adfmf-panelGroupLayout-groupBox custom-dashboard-card">
                         <amx:panelFormLayout id="pfl1">
@@ -60,15 +71,23 @@
                                 <amx:selectItem id="si4" label="1000 miles" value="1000"/>
                             </amx:selectOneChoice>
                         </amx:panelFormLayout>
-                        <!--
-                        <amx:commandButton actionListener="#{bindings.createCustomerComplaint.execute}"
-                                           text="createCustomerComplaint"
-                                           disabled="#{!bindings.createCustomerComplaint.enabled}" 
-                                           id="cb3"/>
--->
-                        <amx:commandButton actionListener="#{pageFlowScope.flightAppBean.submitComplaint}" text="submit"
-                                           id="cb3"/>
                     </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2a">
+                <amx:cellFormat id="cf2a" width="100%" halign="center" columnSpan="3">
+                <amx:panelGroupLayout layout="vertical" halign="center" >
+                <amx:outputText value="Sign here to validate complaint" inlineStyle="font-weight: bold; color: #68C182;"/>
+                    <eproseed:signature id="container" value="#{pageFlowScope.flightAppBean.signature}"
+                                        width="#{deviceScope.hardware.screen.width/2}" height="200"></eproseed:signature>
+                </amx:panelGroupLayout>
+                </amx:cellFormat>
+                
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2q">
+                <amx:cellFormat id="cf2q" width="100%" halign="center" columnSpan="3">
+                    <amx:commandButton actionListener="#{pageFlowScope.flightAppBean.submitComplaint}" text="submit"
+                                       id="cb3"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>

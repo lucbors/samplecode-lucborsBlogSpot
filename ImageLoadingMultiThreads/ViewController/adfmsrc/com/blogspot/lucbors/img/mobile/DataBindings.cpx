@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.blogspot.lucbors.img.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/employee/EmpList.amx" usageId="com_blogspot_lucbors_img_mobile_EmpListPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_blogspot_lucbors_img_mobile_EmpListPageDef" path="employee.EmpListPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="EmployeeService" path="com.blogspot.lucbors.img.mobile.EmployeeService"/>
+  </dataControlUsages>
+</Application>

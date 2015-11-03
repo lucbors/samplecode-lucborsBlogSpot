@@ -4,4 +4,7 @@
                    appControllerFolder="ApplicationController"
                    listener-class="com.fhacust.app.application.LifeCycleListenerImpl">
   <adfmf:featureReference refId="com.fhacust.app.FullFlightApp" id="fr2"/>
+  <adfmf:navigation>
+    <adfmf:springboard enabled="true" showSpringboardAtStartup="false" width="200"/>
+  </adfmf:navigation>
 </adfmf:application>

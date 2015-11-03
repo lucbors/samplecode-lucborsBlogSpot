@@ -1,3 +1,38 @@
+.amx-masonryLayout {
+    margin: 5px;
+}
+
+.amx-image.contactListIcon {
+    width: 40px;
+    height: 40px;
+}
+
+.amx-commandLink.revealLink, .amx-goLink.revealLink {
+    width: 80px;
+    background-color: #0572ce;
+}
+
+/*.amx-masonryLayoutItem-size-1x1 {
+    width: 242px;
+    height: 242px;
+}
+
+.amx-masonryLayoutItem-size-2x1 {
+    width: 494px;
+    height: 242px;
+}
+
+.amx-masonryLayoutItem-size-1x2 {
+    width: 242px;
+    height: 494px;
+}
+
+.amx-masonryLayoutItem-size-2x2 {
+    width: 494px;
+    height: 494px;
+}*/
+
+
 .card {
   margin: 10px;
   padding-bottom: 10px;
@@ -226,10 +261,12 @@ html[dir=rtl].amx-android-chrome .custom-panelPage-with-springboard .custom-spri
 
 .fhaSwitch .amx-selectBooleanSwitch.on .field-value .switch:active {
  color: Lime;
+ background-color: Lime;
 }
 
 .fhaSwitch .amx-selectBooleanSwitch.off .field-value .switch:active {
  color: Red;
+ background-color: Red;
 }
 
 .fhaFF{

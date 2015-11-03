@@ -38,7 +38,7 @@ public class FlightPassengersDC {
 
     public void setFlightDetails(FlightDetailsEntity flightDetails) {
         this.flightDetails = flightDetails;
-        providerChangeSupport.fireProviderRefresh("flightDetails");
+       // providerChangeSupport.fireProviderRefresh("flightDetails");
     }
 
 
@@ -122,7 +122,7 @@ public class FlightPassengersDC {
     
     public void setFlightPassengers(FlightPassengerListEntity flightPassengers) {
         this.flightPassengers = flightPassengers;
-        providerChangeSupport.fireProviderRefresh("flightPassengers");
+ //       providerChangeSupport.fireProviderRefresh("flightPassengers");
     }
 
     public FlightPassengerListEntity getFlightPassengers() {

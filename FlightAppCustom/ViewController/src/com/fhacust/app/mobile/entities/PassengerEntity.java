@@ -57,9 +57,17 @@ public class PassengerEntity {
     }
 
     public void setFrequentFlyerNumber(String frequentFlyerNumber) {
+  
+        if(frequentFlyerNumber==null){
+            frequentFlyerNumber="";
+        }
+
         String oldFrequentFlyerNumber = this.frequentFlyerNumber;
         this.frequentFlyerNumber = frequentFlyerNumber;
         propertyChangeSupport.firePropertyChange("frequentFlyerNumber", oldFrequentFlyerNumber, frequentFlyerNumber);
+        Trace.log(Utility.ApplicationLogger, Level.SEVERE, PassengerEntity.class, "frequentFlyerNumber",
+                  frequentFlyerNumber);
+
     }
 
     public String getFrequentFlyerNumber() {

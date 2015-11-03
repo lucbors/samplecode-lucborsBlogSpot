@@ -24,6 +24,83 @@
                 </amx:panelFormLayout>
             </amx:facet>
             <amx:facet name="center">
+                <!--
+</amx:facet>
+</amx:panelStretchLayout>
+-->
+                <!--
+        <amx:masonryLayout id="ml1" >
+            <amx:masonryLayoutItem id="mli1" dimension="2x2">
+                                        <amx:panelGroupLayout id="pglPage1Card1" layout="horizontal"
+                                                  styleClass="adfmf-panelGroupLayout-groupBox custom-dashboard-card">
+                                <amx:fragment src="/com.fhacust.app.FullFlightApp/fragments/OrgDest.amxf" id="f1"
+                                              styleClass="custom-dashboard-tile">
+                                    <amx:attribute name="Title" value="#{'Origin'}" id="a0"/>
+                                    <amx:attribute name="Time" value="#{bindings.time}" id="a1"/>
+                                    <amx:attribute name="AirportCode" value="#{bindings.airportCode}" id="a5"/>
+                                    <amx:attribute name="AirportName" value="#{bindings.airportName}" id="a4"/>
+                                    <amx:attribute name="City" value="#{bindings.city}" id="a2"/>
+                                    <amx:attribute name="Country" value="#{bindings.country}" id="a3"/>
+                                </amx:fragment>
+                            </amx:panelGroupLayout>
+            </amx:masonryLayoutItem>
+            <amx:masonryLayoutItem id="mli2" dimension="2x2" >
+             <amx:panelGroupLayout id="pglPage1Card3"
+                                                  styleClass="adfmf-panelGroupLayout-groupBox custom-dashboard-card">
+                                <amx:fragment src="/com.fhacust.app.FullFlightApp/fragments/OrgDest.amxf" id="f2"
+                                              styleClass="custom-dashboard-tile">
+                                    <amx:attribute name="Title" value="#{'Destination'}" id="b0"/>
+                                    <amx:attribute name="Time" value="#{bindings.time1}" id="b1"/>
+                                    <amx:attribute name="AirportCode" value="#{bindings.airportCode1}" id="b5"/>
+                                    <amx:attribute name="AirportName" value="#{bindings.airportName1}" id="b4"/>
+                                    <amx:attribute name="City" value="#{bindings.city1}" id="b2"/>
+                                    <amx:attribute name="Country" value="#{bindings.country1}" id="b3"/>
+                                </amx:fragment>
+                            </amx:panelGroupLayout>
+            </amx:masonryLayoutItem>
+            <amx:masonryLayoutItem id="mli3" dimension="3x2">
+            
+               <amx:panelGroupLayout id="pglPage1Card2"
+                                                  styleClass="adfmf-panelGroupLayout-groupBox custom-dashboard-card">
+                                <dvtm:geographicMap id="geomp1">
+                                    <dvtm:route id="r1">
+                                        <dvtm:pointLocation type="pointXY" pointY="52.3081" pointX="4.7642" />
+                                        <dvtm:pointLocation type="pointXY" pointY="37.6189" pointX="122.3750"/>
+                                    </dvtm:route>
+<dvtm:pointDataLayer>
+                                        <dvtm:pointLocation type="pointXY" pointY="52.3081" pointX="4.7642" />
+                                        <dvtm:pointLocation type="pointXY" pointY="37.6189" pointX="122.3750"/>
+
+</dvtm:pointDataLayer>
+                                </dvtm:geographicMap>
+                            </amx:panelGroupLayout>
+            </amx:masonryLayoutItem>
+            <amx:masonryLayoutItem id="mli4" dimension="3x2">
+                                        <amx:panelGroupLayout layout="horizontal" inlineStyle="width:100%" scrollPolicy="scroll">
+                                <amx:image id="i1" source="/thematicmap/seatplan.png"/>
+                            </amx:panelGroupLayout>
+            
+</amx:masonryLayoutItem>
+                    <amx:masonryLayoutItem id="mli5" dimension="2x1">
+                                                  <amx:panelGroupLayout halign="center" layout="vertical" inlineStyle="width:100%" scrollPolicy="scroll">
+          
+                                                <amx:selectBooleanSwitch label="Boarding Complete ?" id="sbs1" offLabel="Now Boarding"
+                                                     onLabel="Boarding Complete"
+                                                     valueChangeListener="#{pageFlowScope.flightAppBean.setFlightStatusToBoardingComplete}"
+                                                     styleClass="fhaSwitch"/>
+
+                         <amx:commandButton text="Passenger Details" id="cl1" action="passengers">
+                        <amx:setPropertyListener from="#{bindings.carrierCode.inputValue}"
+                                                 to="#{applicationScope.currentCarrierCode}" type="action" id="spl1"/>
+                        <amx:setPropertyListener from="#{bindings.flightNumber.inputValue}"
+                                                 to="#{applicationScope.currentFlightNumber}" type="action" id="spl2"/>
+                    </amx:commandButton>
+</amx:panelGroupLayout>               
+                    </amx:masonryLayoutItem>
+                </amx:masonryLayout>
+
+
+-->
                 <amx:tableLayout id="tl1" width="100%">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat id="cf1" width="50%">
@@ -56,45 +133,52 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl2a">
-                        <amx:cellFormat id="cf2" width="100%" columnSpan="2">
+                        <amx:cellFormat id="cf2" width="100%" columnSpan="2" halign="center">
                             <amx:panelGroupLayout id="pglPage1Card2"
                                                   styleClass="adfmf-panelGroupLayout-groupBox custom-dashboard-card">
-                                <dvtm:geographicMap id="geomp1" >
-                                    <dvtm:route id="r1" >
-                                 <dvtm:pointLocation type="pointXY" pointY="52.3081" pointX="4.7642"  />
-                                  <dvtm:pointLocation type="pointXY"  pointY="37.6189" pointX="122.3750" />
-                                   </dvtm:route >
+                                <dvtm:geographicMap id="geomp1" initialZooming="auto" mapType="ROADMAP">
+                                    <dvtm:route id="r1">
+                                        <dvtm:pointLocation type="pointXY" pointX="52.3081" pointY="4.7642"/>
+                                        <dvtm:pointLocation type="pointXY" pointX="37.6189" pointY="-122.3750"/>
+                                    </dvtm:route>
+                                    <!--
+                                    <dvtm:pointDataLayer>
+                                        <dvtm:pointLocation type="pointXY" pointX="52.3081" pointY="4.7642"/>
+                                        <dvtm:pointLocation type="pointXY" pointX="37.6189" pointY="-122.3750"/>
+                                    </dvtm:pointDataLayer-->
                                 </dvtm:geographicMap>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl2">
-                        <amx:cellFormat id="cf4" width=" 100%" columnSpan="2">
+                        <amx:cellFormat id="cf4" width=" 100%" columnSpan="2" halign="center">
                             <amx:panelGroupLayout layout="horizontal" inlineStyle="width:100%" scrollPolicy="scroll">
                                 <amx:image id="i1" source="/thematicmap/seatplan.png"/>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl3">
-                        <amx:cellFormat id="cf5"  columnSpan="2" halign="center"
-                        > 
-                            <amx:selectBooleanSwitch label="Boarding Complete ?" id="sbs1" offLabel="Now Boarding" onLabel="Boarding Complete"
-                                                     valueChangeListener="#{pageFlowScope.flightAppBean.setFlightStatusToBoardingComplete}"
-                                                     styleClass="fhaSwitch"/>
+                        <amx:cellFormat id="cf5"  halign="center">
+                                <amx:selectBooleanSwitch label="Boarding Complete ?" id="sbs1" offLabel="Now Boarding"
+                                                         onLabel="Boarding Complete"
+                                                         valueChangeListener="#{pageFlowScope.flightAppBean.setFlightStatusToBoardingComplete}"
+                                                         styleClass="fhaSwitch"/>
+                                                         </amx:cellFormat>
+                        <amx:cellFormat id="cf5a" columnSpan="2" halign="center">
+                       
+                                    <amx:commandLink text="Passenger Details" id="cl1" action="passengers">
+                                        <amx:setPropertyListener from="#{bindings.carrierCode.inputValue}"
+                                                                 to="#{applicationScope.currentCarrierCode}"
+                                                                 type="action" id="spl1"/>
+                                        <amx:setPropertyListener from="#{bindings.flightNumber.inputValue}"
+                                                                 to="#{applicationScope.currentFlightNumber}"
+                                                                 type="action" id="spl2"/>
+                                    </amx:commandLink>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:facet>
-            <amx:facet name="bottom">
-                <amx:panelGroupLayout id="pgl1" valign="middle" halign="center">
-                    <amx:commandLink text="Passenger Details" id="cl1" action="passengers">
-                        <amx:setPropertyListener from="#{bindings.carrierCode.inputValue}"
-                                                 to="#{applicationScope.currentCarrierCode}" type="action" id="spl1"/>
-                        <amx:setPropertyListener from="#{bindings.flightNumber.inputValue}"
-                                                 to="#{applicationScope.currentFlightNumber}" type="action" id="spl2"/>
-                    </amx:commandLink>
-                </amx:panelGroupLayout>
-            </amx:facet>
+            <amx:facet name="bottom"></amx:facet>
         </amx:panelStretchLayout>
     </amx:panelPage>
 </amx:view>

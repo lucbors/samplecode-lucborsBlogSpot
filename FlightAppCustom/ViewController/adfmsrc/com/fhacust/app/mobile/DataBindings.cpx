@@ -6,17 +6,12 @@
               usageId="com_fhacust_app_mobile_FlightDetailsPageDef"/>
         <page path="/com.fhacust.app.FullFlightApp/Passengers.amx" usageId="com_fhacust_app_mobile_PassengersPageDef"/>
         <page path="/com.fhacust.app.FullFlightApp/Complaints.amx" usageId="com_fhacust_app_mobile_ComplaintsPageDef"/>
-        <page path="/com.fhacust.app.FullFlightApp/newComplaint.amx"
-              usageId="com_fhacust_app_mobile_newComplaintPageDef"/>
-        <page path="/com.fhacust.app.OdtugDemo/odtugDemo.amx" usageId="com_fhacust_app_mobile_odtugDemoPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="com_fhacust_app_mobile_FlightDetailsPageDef"
               path="com.fhacust.app.FullFlightApp.FlightDetailsPageDef"/>
         <page id="com_fhacust_app_mobile_PassengersPageDef" path="com.fhacust.app.FullFlightApp.PassengersPageDef"/>
         <page id="com_fhacust_app_mobile_ComplaintsPageDef" path="com.fhacust.app.FullFlightApp.ComplaintsPageDef"/>
-        <page id="com_fhacust_app_mobile_newComplaintPageDef" path="com.fhacust.app.FullFlightApp.newComplaintPageDef"/>
-        <page id="com_fhacust_app_mobile_odtugDemoPageDef" path="com.fhacust.app.OdtugDemo.odtugDemoPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="FlightPassengersDC" path="com.fhacust.app.mobile.FlightPassengersDC"/>

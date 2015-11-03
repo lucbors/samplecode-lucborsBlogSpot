@@ -1,35 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Passengers for #{applicationScope.currentCarrierCode}#{applicationScope.currentFlightNumber}" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1" action="__back"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-    <amx:fragment src="/com.fhacust.app.FullFlightApp/fragments/Person.amxf" id="f1">
-      <amx:attribute name="Title" value="Passengers" id="a4"/>
-      <amx:attribute name="Persons" value="#{bindings.passengers}"
-                     id="a1"/>
-      <amx:attribute name="FirstName"
-                     value="firstName" id="a6"/>
-      <amx:attribute name="LastName"
-                     value="lastName"
-                     id="a3"/>
-      <amx:attribute name="Special"
-                     value="frequentFlyerNumber"
-                     id="a5"/>
-      <amx:attribute name="Seat" value="seat"
-                     id="a2"/>
- 
-      <amx:attribute name="ComplaintFiled" value="complaintFiled"
-                     id="a21"/>
-
-    </amx:fragment>
- 
-  </amx:panelPage>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Passengers for #{applicationScope.currentCarrierCode}#{applicationScope.currentFlightNumber}"
+                            id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" action="__back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+        </amx:facet>
+        <amx:fragment src="/com.fhacust.app.FullFlightApp/fragments/Person.amxf" id="f1">
+            <amx:attribute name="Title" value="Passengers" id="a4"/>
+            <amx:attribute name="Persons" value="#{bindings.passengers}" id="a1"/>
+            <amx:attribute name="FirstName" value="firstName" id="a6"/>
+            <amx:attribute name="LastName" value="lastName" id="a3"/>
+            <amx:attribute name="Special" value="frequentFlyerNumber" id="a5"/>
+            <amx:attribute name="Seat" value="seat" id="a2"/>
+            <amx:attribute name="ComplaintFiled" value="complaintFiled" id="a21"/>
+        </amx:fragment>
+    </amx:panelPage>
 </amx:view>

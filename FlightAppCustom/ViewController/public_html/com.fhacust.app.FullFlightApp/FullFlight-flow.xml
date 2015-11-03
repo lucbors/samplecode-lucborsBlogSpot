@@ -16,8 +16,8 @@
     <view id="Complaints">
       <page>/com.fhacust.app.FullFlightApp/Complaints.amx</page>
     </view>
-    <view id="view1">
-      <page>/com.fhacust.app.FullFlightApp/newComplaint.amx</page>
+    <view id="debug">
+      <page>/debug.amx</page>
     </view>
     <control-flow-rule id="__1">
       <from-activity-id>FlightDetails</from-activity-id>
@@ -32,9 +32,12 @@
         <from-outcome>complain</from-outcome>
         <to-activity-id>Complaints</to-activity-id>
       </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>Complaints</from-activity-id>
       <control-flow-case id="__6">
-        <from-outcome>complain2</from-outcome>
-        <to-activity-id>view1</to-activity-id>
+        <from-outcome>debug</from-outcome>
+        <to-activity-id>debug</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

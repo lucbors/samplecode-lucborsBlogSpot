@@ -54,14 +54,17 @@
             </amx:rowLayout>
             <amx:rowLayout id="rl2DepDest">
                 <amx:cellFormat id="cf4DepDest" styleClass="custom-h-divide-row" halign="start" shortDesc="Cell">
-                    <amx:outputText id="ot4DepDest" value="#{Seat.inputValue} (#{FF.inputValue})"
+                    <amx:outputText id="ot4DepDest" value="#{Seat.inputValue} (#{FF.inputValue==''?'no frequent flyer':FF.inputValue})"
                                     inlineStyle="font-weight: bold; color: #68C182;"/>
                 </amx:cellFormat>
+
             </amx:rowLayout>
             <amx:rowLayout id="rlDepDestDiv2">
                 <amx:cellFormat id="cfDepDestDiv2"  styleClass="custom-divider" shortDesc="Cell">
                     <amx:spacer id="spDepDestDiv2" width="1" height="1"/>
                 </amx:cellFormat>
+
+
             </amx:rowLayout>
             <!--amx:rowLayout id="rl3DepDest">
                 <amx:cellFormat id="cf6DepDest" styleClass="custom-h-divide-row" halign="start" shortDesc="Cell">

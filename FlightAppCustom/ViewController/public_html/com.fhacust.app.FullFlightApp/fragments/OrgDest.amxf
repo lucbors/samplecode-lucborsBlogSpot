@@ -63,10 +63,10 @@
             </amx:rowLayout>
             <amx:rowLayout id="rl3DepDest">
                 <amx:cellFormat id="cf6DepDest" styleClass="custom-h-divide-row" halign="start" shortDesc="Cell">
-                    <amx:inputDate id="ot6DepDest" value="#{Time.inputValue}"
-                                    inputType="datetime"
-                                    readOnly="true"
-                                    inlineStyle="font-weight: bold; color: #F8953B;"/>                
+                    <amx:outputText id="ot6DepDest" value="#{Time.inputValue}"
+                                    inlineStyle="font-weight: bold; color: #F8953B;">
+                        <amx:convertDateTime id="cdt1" type="both" dateStyle="short" timeStyle="short"/>
+                    </amx:outputText>                
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>

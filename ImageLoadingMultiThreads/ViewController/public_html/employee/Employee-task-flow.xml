@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="Employee-task-flow">
+    <default-activity>EmpList</default-activity>
+    <view id="EmpList">
+      <page>/employee/EmpList.amx</page>
+    </view>
+  </task-flow-definition>
+</adfc-mobile-config>

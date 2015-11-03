@@ -154,7 +154,7 @@
             <hash n="iosDeploymentOptions">
                <value n="appArchiveName" v="FlightAppCustomTwo"/>
                <value n="appBundleId" v="com.company.FlightAppCustomTwo"/>
-               <value n="debugFlag" v="true"/>
+               <value n="debugFlag" v="false"/>
                <value n="iPadOrientationLandscapeLeft" v="false"/>
                <value n="iPadOrientationLandscapeRight" v="false"/>
                <value n="iPadOrientationPortraitUpsideDown" v="false"/>
@@ -162,7 +162,8 @@
                <value n="iPhoneOrientationLandscapeRight" v="false"/>
                <value n="iPhoneOrientationPortrait" v="false"/>
                <value n="iPhoneOrientationPortraitUpsideDown" v="false"/>
-               <value n="simulatorTarget" v="iPad Retina (iOS 8.3 - iPad Retina)"/>
+               <value n="simulatorDeviceId" v="048D4115-D1A8-4A1B-83B7-EAD58142542A"/>
+               <value n="simulatorTarget" v="iPad 2 (iOS 8.4 - iPad 2)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
             <hash n="mnfImageOptions">

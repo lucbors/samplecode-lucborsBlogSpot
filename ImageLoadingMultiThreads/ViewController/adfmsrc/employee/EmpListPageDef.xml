@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="EmpListPageDef"
+                Package="employee">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="EmployeeService" id="EmployeeServiceIterator"/>
+    <accessorIterator MasterBinding="EmployeeServiceIterator" Binds="employees" RangeSize="25"
+                      DataControl="EmployeeService" BeanClass="com.blogspot.lucbors.img.mobile.pojo.Employee"
+                      id="employeesIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="employeesIterator" id="employees">
+      <nodeDefinition DefName="com.blogspot.lucbors.img.mobile.pojo.Employee" Name="employees0">
+        <AttrNames>
+         <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="image"/>
+          <Item Value="activeImage"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
